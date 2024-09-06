@@ -176,4 +176,19 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
     public void print(PrintStream p) {
         p.print(this.root.toInOrderString());
     }
+
+    public boolean test1() {
+
+        return false;
+    }
+
+    public boolean test2() {
+
+        return false;
+    }
+
+    public boolean test3() {
+
+        return false;
+    }
 }

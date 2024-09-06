@@ -95,62 +95,6 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
     }
 
     /**
-     * Removes the node containing key from this BST if it is there;
-     * otherwise, do nothing
-     * @param key the key to delete
-     */
-    public void delete(T key) {
-        this.root = delete(this.root, key);
-    }
-
-    private BSTNode<T> delete(BSTNode<T> node, Comparable<T> key) {
-        if (node == null) {
-            return null;
-        }
-        if (key.equals(node.getData())) {
-            if (node.getLeft() == null && node.getRight() == null) {
-                return null;
-            }
-            if (node.getLeft() == null) {
-                return node.getRight();
-            }
-            if (node.getRight() == null) {
-                return node.getLeft();
-            }
-            T small = smallest(node.getRight());
-            node.setData(small);
-            node.setRight(delete(node.getRight(), small));
-            return node;
-        }
-        else if (key.compareTo(node.getData()) < 0) {
-            node.setLeft(delete(node.getLeft(), key));
-            return node;
-        }
-        else {
-            node.setRight(delete(node.getRight(), key));
-            return node;
-        }
-    }
-
-    /**
-     * Finds the furthest left node given a starting node
-     * @param node the node to begin searching at
-     * @return the data of the furthest left node
-     */
-    private T smallest(BSTNode<T> node) {
-        if (node == null) {
-            return null;
-        }
-        if (node.getLeft() == null) {
-            return node.getData();
-        }
-        else {
-            return smallest(node.getLeft());
-        }
-    }
-
-
-    /**
      * If key is in this BST, returns true; otherwise, returns false
      * @param key the key to search for
      * @return boolean
@@ -280,27 +224,6 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
         }
         // inner nodes using contains instead of lookup
         if (!bst.contains(9) || !bst.contains(13)) {
-            return false;
-        }
-        bst.delete(5);
-        // tree structure is:
-        //          13
-        //      9       16
-        //       12       19
-        bst.print(System.out);
-        if (bst.contains(5)) {
-            return false;
-        }
-        bst.delete(9);
-        // tree structure is:
-        //          13
-        //      12      16
-        //                 19
-        bst.print(System.out);
-        if (bst.contains(9)) {
-            return false;
-        }
-        if (bst.size() != 4) {
             return false;
         }
         return true;

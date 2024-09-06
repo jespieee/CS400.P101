@@ -84,6 +84,7 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
      * Removes all nodes from the tree
      */
     public void clear() {
+        this.root = null;
         this.size = 0;
     }
 

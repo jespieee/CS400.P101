@@ -6,14 +6,17 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
 
     /**
      * Adds a key to this BST; error if it is already there
-     * @param key the new value being inserted
+     * @param data the new value being inserted
      */
-    public void insert(T key) {
+    public void insert(T data) throws NullPointerException {
+        if (data == null) {
+            throw new NullPointerException();
+        }
         if (this.root == null) {
-            this.root = new BSTNode<>(key);
+            this.root = new BSTNode<>(data);
         }
         else {
-            insertHelper(new BSTNode<T>(key), this.root);
+            insertHelper(new BSTNode<T>(data), this.root);
         }
     }
 
@@ -69,6 +72,10 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
         }
     }
 
+    /**
+     * Checks the size of the tree by recursively counting each node and its children
+     * @return the number of nodes in the BST
+     */
     public int size() {
         if (this.root == null) {
             return 0;
@@ -83,6 +90,9 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
         return 1+ size(node.getLeft()) + size(node.getRight());
     }
 
+    /**
+     * @return true if the tree has any non-null nodes, otherwise false
+     */
     public boolean isEmpty() {
         return this.root == null;
     }
@@ -111,12 +121,12 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
      */
     public boolean test1() {
         var bst = new BinarySearchTree<String>();
-        bst.insert("a");
+        bst.insert("c");
         if (bst.size() != 1) {
             return false;
         }
+        bst.insert("a");
         bst.insert("b");
-        bst.insert("c");
         bst.insert("d");
         if (bst.size() != 4) {
             return false;

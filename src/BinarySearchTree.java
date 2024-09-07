@@ -133,6 +133,10 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
         }
         bst.insert("e");
 
+        // tree structure is:
+        //           c
+        //      a         d
+        //        b         e
         bst.print(System.out);
 
         if (!bst.contains("a") || !bst.contains("b") || !bst.contains("c") || !bst.contains("d") || !bst.contains("e")) {
@@ -166,7 +170,10 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
         if (bst.size() != 7) {
             return false;
         }
-
+        // tree structure is:
+        //           4
+        //      2         7
+        //    1   3     5   9
         bst.print(System.out);
 
         if (!bst.contains(1) || !bst.contains(2) || !bst.contains(3) || !bst.contains(4)
@@ -210,6 +217,10 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
         }
         // inner nodes using contains instead of lookup
         if (!bst.contains(9) || !bst.contains(13)) {
+            return false;
+        }
+        bst.clear();
+        if (bst.size() != 0) {
             return false;
         }
         return true;

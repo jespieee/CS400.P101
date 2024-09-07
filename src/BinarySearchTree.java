@@ -95,30 +95,6 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
     }
 
     /**
-     * If key is in this BST, returns true; otherwise, returns false
-     * @param key the key to search for
-     * @return boolean
-     */
-    public boolean lookup(T key) {
-        return lookup(this.root, key);
-    }
-
-    private boolean lookup(BSTNode<T> node, T key) {
-        if (node == null) {
-            return false;
-        }
-        if (node.getData().equals(key)) {
-            return true;
-        }
-        if (key.compareTo(node.getData()) < 0) {
-            return lookup(node.getLeft(), key);
-        }
-        else {
-            return lookup(node.getRight(), key);
-        }
-    }
-
-    /**
      * Prints the values in this BST in sorted order (to p)
      * @param p the PrintStream to print to
      */
@@ -149,7 +125,7 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
 
         bst.print(System.out);
 
-        if (!bst.lookup("a") || !bst.lookup("b") || !bst.lookup("c") || !bst.lookup("d") || !bst.lookup("e")) {
+        if (!bst.contains("a") || !bst.contains("b") || !bst.contains("c") || !bst.contains("d") || !bst.contains("e")) {
             return false;
         }
         if (bst.size() != 5) {
@@ -159,7 +135,7 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
         if (bst.size() != 0) {
             return false;
         }
-        if (bst.lookup("a") || bst.lookup("b") || bst.lookup("c") || bst.lookup("d") || bst.lookup("e")) {
+        if (bst.contains("a") || bst.contains("b") || bst.contains("c") || bst.contains("d") || bst.contains("e")) {
             return false;
         }
         return true;
@@ -183,8 +159,8 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
 
         bst.print(System.out);
 
-        if (!bst.lookup(1) || !bst.lookup(2) || !bst.lookup(3) || !bst.lookup(4)
-                || !bst.lookup(5) || !bst.lookup(7) || !bst.lookup(9)) {
+        if (!bst.contains(1) || !bst.contains(2) || !bst.contains(3) || !bst.contains(4)
+                || !bst.contains(5) || !bst.contains(7) || !bst.contains(9)) {
             return false;
         }
 
@@ -192,8 +168,8 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
         if (bst.size() != 0) {
             return false;
         }
-        if (bst.lookup(1) || bst.lookup(2) || bst.lookup(3) || bst.lookup(4)
-                || bst.lookup(5) || bst.lookup(7) || bst.lookup(9)) {
+        if (bst.contains(1) || bst.contains(2) || bst.contains(3) || bst.contains(4)
+                || bst.contains(5) || bst.contains(7) || bst.contains(9)) {
             return false;
         }
         return true;

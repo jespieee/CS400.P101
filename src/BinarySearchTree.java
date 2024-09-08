@@ -109,7 +109,11 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
      * @param p the PrintStream to print to
      */
     public void print(PrintStream p) {
+        if (this.root == null) {
+            return;
+        }
         p.print(this.root.toInOrderString());
+        // p.print(this.root.toLevelOrderString());
     }
 
     /**
@@ -211,11 +215,9 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
         if (bst.size() != 6) {
             return false;
         }
-        // leaf nodes using contains instead of lookup
         if (!bst.contains(5) || !bst.contains(12) || !bst.contains(19)) {
             return false;
         }
-        // inner nodes using contains instead of lookup
         if (!bst.contains(9) || !bst.contains(13)) {
             return false;
         }

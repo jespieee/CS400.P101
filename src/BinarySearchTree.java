@@ -102,7 +102,21 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
      */
     public void clear() {
         this.root = null;
+        // if the above isn't acceptable, then...
+        // clear(this.root);
     }
+
+    /**
+     *
+     * @param node the node to get children from and delete
+    private void clear(BSTNode<T> node) {
+        if (node != null) {
+            clear(node.getLeft());
+            clear(node.getRight());
+            node = null;
+        }
+    }
+    */
 
     /**
      * Prints the values in this BST in sorted order (to p)

@@ -10,7 +10,7 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
         if (data == null) {
             throw new NullPointerException();
         }
-        if (this.root == null) {
+        if (this.root == null) { // make the data the new root
             this.root = new BSTNode<>(data);
         }
         else {
@@ -28,11 +28,11 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
         if (subtree == null) {
             return;
         }
-        if (newNode.getData().compareTo(subtree.getData()) <= 0) {
+        if (newNode.getData().compareTo(subtree.getData()) <= 0) { // nodes less than OR equal to go on the left
             if (subtree.getLeft() == null) {
                 subtree.setLeft(newNode);
             }
-            else {
+            else { // continue left to handle existing children
                 insertHelper(newNode, subtree.getLeft());
             }
         }
@@ -40,7 +40,7 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
             if (subtree.getRight() == null) {
                 subtree.setRight(newNode);
             }
-            else {
+            else { // continue right to handle existing children
                 insertHelper(newNode, subtree.getRight());
             }
         }
@@ -85,7 +85,7 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
         if (node == null) {
             return 0;
         }
-        return 1+ size(node.getLeft()) + size(node.getRight());
+        return 1 + size(node.getLeft()) + size(node.getRight());
     }
 
     /**

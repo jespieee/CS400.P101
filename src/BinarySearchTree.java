@@ -1,5 +1,3 @@
-import java.io.PrintStream;
-
 public class BinarySearchTree <T extends Comparable<T>> implements SortedCollection<T> {
 
     protected BSTNode<T> root; // ptr to the root of the BST
@@ -119,15 +117,14 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
     */
 
     /**
-     * Prints the values in this BST in sorted order (to p)
-     * @param p the PrintStream to print to
+     * Prints the values in this BST in sorted order, then level order (to System)
      */
-    public void print(PrintStream p) {
+    public void print() {
         if (this.root == null) {
             return;
         }
-        p.print(this.root.toInOrderString());
-        // p.print(this.root.toLevelOrderString());
+        System.out.println(this.root.toInOrderString());
+        System.out.println(this.root.toLevelOrderString());
     }
 
     /**
@@ -155,7 +152,7 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
         //           c
         //      a         d
         //        b         e
-        bst.print(System.out);
+        bst.print();
 
         if (!bst.contains("a") || !bst.contains("b") || !bst.contains("c") || !bst.contains("d") || !bst.contains("e")) {
             return false;
@@ -192,7 +189,7 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
         //           4
         //      2         7
         //    1   3     5   9
-        bst.print(System.out);
+        bst.print();
 
         if (!bst.contains(1) || !bst.contains(2) || !bst.contains(3) || !bst.contains(4)
                 || !bst.contains(5) || !bst.contains(7) || !bst.contains(9)) {
@@ -221,7 +218,7 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
         bst.insert(12);
         bst.insert(16);
         bst.insert(19);
-        bst.print(System.out);
+        bst.print();
         // tree structure is:
         //          13
         //      9       16

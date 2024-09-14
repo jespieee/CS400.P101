@@ -31,6 +31,7 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
         if (newNode.getData().compareTo(subtree.getData()) <= 0) { // nodes less than OR equal to go on the left
             if (subtree.getLeft() == null) {
                 subtree.setLeft(newNode);
+                newNode.setUp(subtree);
             }
             else { // continue left to handle existing children
                 insertHelper(newNode, subtree.getLeft());
@@ -39,6 +40,7 @@ public class BinarySearchTree <T extends Comparable<T>> implements SortedCollect
         else {
             if (subtree.getRight() == null) {
                 subtree.setRight(newNode);
+                newNode.setUp(subtree);
             }
             else { // continue right to handle existing children
                 insertHelper(newNode, subtree.getRight());
